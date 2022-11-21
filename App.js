@@ -22,6 +22,7 @@ import HomeStack from './src/navigation/HomeStack';
 import auth from '@react-native-firebase/auth';
 import messaging from '@react-native-firebase/messaging';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import SplashScreen from 'react-native-splash-screen'
 
 const fcmTokenKey = "fcmToken"
 
@@ -88,7 +89,10 @@ const App = () => {
   }, [user])
 
 
-  if (initializing) return null; // handle splash screen
+  if (initializing) { return null; }
+  else {
+    SplashScreen.hide()
+  } // handle splash screen
   return (
     <SafeAreaView style={styles.container}>
       <UserContext.Provider value={{
