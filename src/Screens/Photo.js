@@ -29,7 +29,7 @@ const Photo = () => {
     }
 
     useEffect(() => {
-        if (SelectedImage) {
+        if (SelectedImage && SelectedImage.assets?.length() && SelectedImage.assets[0]?.uri) {
             console.log(SelectedImage);
 
             const task = reference.putFile(SelectedImage.assets[0].uri)

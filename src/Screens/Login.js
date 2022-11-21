@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import globalStyles from '../Theme/globalStyles'
 import AuthForm from '../Components/AuthForm'
@@ -25,15 +25,20 @@ const Login = ({ navigation }) => {
             console.log('User Login successful');
         })
             .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    console.log('That email address is already in use!');
-                }
 
                 if (error.code === 'auth/invalid-email') {
+                    Alert.alert(
+                        "Invalid Email",
+                        `That email address is invalid!`,
+                    );
                     console.log('That email address is invalid!');
+                } else {
+                    Alert.alert(
+                        "Error Logging in",
+                        `${error.code}`,
+                    );
                 }
 
-                console.error(error);
             });
     }
 
