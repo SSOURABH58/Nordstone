@@ -13,6 +13,8 @@ const options = [
     { key: 4, value: "/" },
 ]
 
+const calcApiUrl = "https://nordstone-task-server.onrender.com"
+
 const Calculator = () => {
     const [InputState, setInputState] = useState({ num1: 0, num2: 0, opera: "+" })
     const [ResultServer, setResultServer] = useState(0)
@@ -37,7 +39,7 @@ const Calculator = () => {
             redirect: 'follow'
         };
 
-        fetch("https://nordstone-task.herokuapp.com/calc", requestOptions)
+        fetch(calcApiUrl + "/calc", requestOptions)
             .then(response => response.text())
             .then(result => { setResultServer(result) })
             .catch(error => console.log('error', error));
